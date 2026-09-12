@@ -1,0 +1,65 @@
+{
+  "name": "webdoc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation eslint .",
+    "migrate": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
+    "migrate:create": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed.ts",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "test": "pnpm test:int",
+    "test:e2e": "playwright test",
+    "test:int": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "3.89.0",
+    "@payloadcms/live-preview-react": "3.89.0",
+    "@payloadcms/next": "3.89.0",
+    "@payloadcms/plugin-search": "3.89.0",
+    "@payloadcms/plugin-seo": "3.89.0",
+    "@payloadcms/richtext-lexical": "3.89.0",
+    "@payloadcms/ui": "3.89.0",
+    "cross-env": "10.1.0",
+    "graphql": "16.11.0",
+    "next": "16.3.5",
+    "payload": "3.89.0",
+    "prism-react-renderer": "2.4.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sharp": "0.34.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0",
+    "@testing-library/react": "16.3.0",
+    "@types/node": "22.18.1",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "@vitejs/plugin-react": "5.0.2",
+    "dotenv": "17.2.2",
+    "eslint": "9.35.0",
+    "eslint-config-next": "16.3.5",
+    "jsdom": "26.1.0",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2",
+    "vite-tsconfig-paths": "5.1.4",
+    "vitest": "3.2.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  }
+}

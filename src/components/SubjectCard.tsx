@@ -1,18 +1,26 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-import type { Subject } from '@/payload-types'
-import { MediaView } from './MediaView'
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import type { Subject } from "@/payload-types";
+import { MediaView } from "./MediaView";
 
-export function SubjectCard({ subject }: { subject: Subject }) {
+type SubjectCardProps = Readonly<{ subject: Subject }>;
+
+export function SubjectCard({ subject }: SubjectCardProps) {
+  const subjectURL = `/subjects/${subject.slug}`;
   return (
-    <article className="card subject-card">
+    <Card className="subject-card">
       <MediaView media={subject.coverImage} />
-      <div className="card-body">
-        <p className="eyebrow">Subject</p>
-        <h2><Link href={`/subjects/${subject.slug}`}>{subject.title}</Link></h2>
-        <p>{subject.description}</p>
-        <Link className="text-link" href={`/subjects/${subject.slug}`}>Explore subject →</Link>
-      </div>
-    </article>
-  )
+      <CardHeader>
+        <Badge variant="secondary">Subject</Badge>
+        <CardTitle><Link href={subjectURL}>{subject.title}</Link></CardTitle>
+      </CardHeader>
+      <CardContent><p>{subject.description}</p></CardContent>
+      <CardFooter>
+        <Link className={buttonVariants({ variant: "link" })} href={subjectURL}>Explore subject →</Link>
+      </CardFooter>
+    </Card>
+  );
 }

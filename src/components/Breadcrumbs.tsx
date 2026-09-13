@@ -1,11 +1,28 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-export type Crumb = { href?: string; label: string }
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
+export type Crumb = Readonly<{ href?: string; label: string }>;
+type BreadcrumbsProps = Readonly<{ items: Crumb[] }>;
+
+export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav className="breadcrumbs" aria-label="Breadcrumb">
-      <ol>{items.map((item, index) => <li key={`${item.label}-${index}`}>{item.href ? <Link href={item.href}>{item.label}</Link> : <span aria-current="page">{item.label}</span>}</li>)}</ol>
-    </nav>
-  )
+    <Breadcrumb className="breadcrumbs">
+      <BreadcrumbList>
+        {items.flatMap((item, index) => [
+          <BreadcrumbItem key={`${item.label}-${index}`}>
+            {item.href ? <BreadcrumbLink render={<Link href={item.href} />}>{item.label}</BreadcrumbLink> : <BreadcrumbPage>{item.label}</BreadcrumbPage>}
+          </BreadcrumbItem>,
+          ...(index < items.length - 1 ? [<BreadcrumbSeparator key={`separator-${index}`} />] : []),
+        ])}
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
 }

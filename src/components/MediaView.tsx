@@ -1,11 +1,21 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-import type { Media } from '@/payload-types'
+import type { Media } from "@/payload-types";
 
-export function MediaView({ media, priority = false }: { media?: Media | number | null; priority?: boolean }) {
-  if (!media || typeof media === 'number' || !media.url) return null
-  if (media.mimeType === 'application/pdf') {
-    return <a className="file-link" href={media.url}>Download {media.filename ?? 'PDF'}</a>
+export function MediaView({
+  media,
+  priority = false,
+}: {
+  media?: Media | number | null;
+  priority?: boolean;
+}) {
+  if (!media || typeof media === "number" || !media.url) return null;
+  if (media.mimeType === "application/pdf") {
+    return (
+      <a className="file-link" href={media.url}>
+        Download {media.filename ?? "PDF"}
+      </a>
+    );
   }
   return (
     <figure className="media-view">
@@ -19,5 +29,5 @@ export function MediaView({ media, priority = false }: { media?: Media | number 
       />
       {media.caption && <figcaption>{media.caption}</figcaption>}
     </figure>
-  )
+  );
 }

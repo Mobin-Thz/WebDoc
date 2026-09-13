@@ -1,9 +1,11 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next";
+import Link from "next/link";
 
-import './(frontend)/styles.css'
+import { buttonVariants } from "@/components/ui/button";
 
-export const metadata: Metadata = { title: 'Page not found | WebDoc' }
+import "./(frontend)/styles.css";
+
+export const metadata: Metadata = { title: "Page not found | WebDoc" };
 
 export default function GlobalNotFound() {
   return (
@@ -13,11 +15,15 @@ export default function GlobalNotFound() {
           <div className="container page-shell narrow not-found">
             <p className="eyebrow">404</p>
             <h1>That page is not in the curriculum.</h1>
-            <p className="lede">It may have moved, remained a draft, or never existed.</p>
-            <Link className="button" href="/subjects">Browse subjects</Link>
+            <p className="lede">
+              It may have moved, remained a draft, or never existed.
+            </p>
+            <Link className={buttonVariants()} href="/subjects">
+              Browse subjects
+            </Link>
           </div>
         </main>
       </body>
     </html>
-  )
+  );
 }

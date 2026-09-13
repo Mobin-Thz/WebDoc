@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.freestyle.example
+.next
+node_modules
+media
+.git
+.agents
+playwright-report
+test-results

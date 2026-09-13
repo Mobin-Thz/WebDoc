@@ -13,4 +13,4 @@ RUN pnpm build
 ENV NODE_ENV=production
 EXPOSE 3000
 
-CMD ["pnpm", "start", "--", "-H", "0.0.0.0", "-p", "3000"]
+CMD ["./node_modules/.bin/next", "start", "-H", "0.0.0.0", "-p", "3000"]

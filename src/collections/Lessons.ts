@@ -15,11 +15,6 @@ export const Lessons: CollectionConfig = {
     update: adminsOnly,
   },
   admin: {
-    components: {
-      edit: {
-        beforeDocumentControls: ['../components/LessonMarkdownControls#LessonMarkdownControls'],
-      },
-    },
     defaultColumns: ['title', 'chapter', 'displayOrder', '_status'],
     livePreview: {
       url: ({ data }) => `/api/preview?secret=${encodeURIComponent(process.env.PREVIEW_SECRET ?? '')}&path=${encodeURIComponent(`/lessons/${data.slug}`)}`,
@@ -38,6 +33,11 @@ export const Lessons: CollectionConfig = {
   },
   versions: { drafts: { autosave: true }, maxPerDoc: 50 },
   fields: [
+    {
+      name: 'markdownTools',
+      type: 'ui',
+      admin: { components: { Field: '@/components/LessonMarkdownControls#LessonMarkdownControls' } },
+    },
     { name: 'title', type: 'text', required: true },
     {
       name: 'slug',

@@ -1,4 +1,41 @@
 :root { --theme-success-500: #2563eb; }
 
-.lesson-markdown-controls { align-items: center; display: flex; flex-wrap: wrap; gap: .4rem; }
-.lesson-markdown-status { font-size: .8125rem; max-width: 22rem; }
+.lesson-markdown-controls {
+  align-items: center;
+  border-block: 1px solid var(--theme-elevation-150);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem 1.25rem;
+  margin: 0 0 2rem;
+  padding: .85rem 0;
+}
+
+.lesson-markdown-heading { align-items: center; display: flex; flex: 1 1 19rem; gap: .7rem; }
+.lesson-markdown-mark {
+  align-items: center;
+  background: var(--theme-elevation-100);
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: 6px;
+  color: var(--theme-elevation-700);
+  display: inline-flex;
+  flex: 0 0 2.25rem;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  font-weight: 700;
+  height: 2.25rem;
+  justify-content: center;
+  letter-spacing: .04em;
+}
+.lesson-markdown-copy { display: grid; gap: .12rem; }
+.lesson-markdown-copy > span, .lesson-markdown-status { color: var(--theme-elevation-600); font-size: .8125rem; }
+.lesson-markdown-actions { align-items: center; display: flex; flex-wrap: wrap; gap: .85rem; }
+.lesson-markdown-divider { background: var(--theme-elevation-200); height: 1.5rem; width: 1px; }
+.lesson-markdown-import { border-radius: 6px; }
+.lesson-markdown-status { flex-basis: 100%; padding-left: 2.95rem; }
+.lesson-markdown-status:empty { display: none; }
+
+@media (max-width: 768px) {
+  .lesson-markdown-actions { gap: .65rem; width: 100%; }
+  .lesson-markdown-divider { display: none; }
+  .lesson-markdown-status { padding-left: 0; }
+}

@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { adminsOnly, publishedLessonOrAdmin } from '../access'
 import { lessonEditor } from '../editor'
+import { lessonMarkdownEndpoints } from './lessonMarkdownEndpoints'
 import { readingTime, type LexicalContent } from '../lib/content'
 import { formatSlug } from '../lib/slug'
 
@@ -14,6 +15,11 @@ export const Lessons: CollectionConfig = {
     update: adminsOnly,
   },
   admin: {
+    components: {
+      edit: {
+        beforeDocumentControls: ['../components/LessonMarkdownControls#LessonMarkdownControls'],
+      },
+    },
     defaultColumns: ['title', 'chapter', 'displayOrder', '_status'],
     livePreview: {
       url: ({ data }) => `/api/preview?secret=${encodeURIComponent(process.env.PREVIEW_SECRET ?? '')}&path=${encodeURIComponent(`/lessons/${data.slug}`)}`,
@@ -21,6 +27,7 @@ export const Lessons: CollectionConfig = {
     useAsTitle: 'title',
   },
   defaultSort: 'displayOrder',
+  endpoints: lessonMarkdownEndpoints,
   hooks: {
     beforeChange: [
       ({ data }) => {

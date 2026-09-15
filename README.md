@@ -41,6 +41,12 @@ The seed does not create an administrator and does nothing when any subject alre
 4. Create lessons linked to chapters, using only the enabled heading, list, quote, link, code, media, YouTube, and callout tools.
 5. Use Preview or Live Preview before publishing. Slugs are generated on creation and are not changed when a title changes.
 
+### AI-assisted lesson authoring
+
+Lesson editors include **Import Markdown**, **Export Markdown**, **Download Template**, and **Copy AI Prompt**. One UTF-8 `.md` file creates or updates one lesson body; on a new lesson, frontmatter can also set `title`, `slug`, `summary`, and `displayOrder`. Choose the chapter manually, review imported content, and save or publish normally.
+
+Markdown supports ordinary text formatting, H2-H4 headings, lists, quotes, links, fenced code, callouts, YouTube blocks, and existing media references such as `![media:42]()`. Media IDs only work in this CMS. Tables, task lists, HTML/MDX, unknown tags, and external or local images are rejected. See [AI authoring instructions](docs/ai-authoring.md) for the canonical template and prompt.
+
 Only authenticated administrators can write content or upload media. All administrators have equal permissions. Draft children whose parent is unpublished are also hidden from public queries.
 
 ## Commands

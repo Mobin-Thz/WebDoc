@@ -27,4 +27,12 @@ export const YouTubeBlock: Block = {
     },
     { name: 'title', type: 'text', defaultValue: 'YouTube video', required: true },
   ],
+  jsx: {
+    export: ({ fields }) => ({ props: { title: fields.title ?? 'YouTube video', url: fields.url } }),
+    import: ({ props }) => {
+      const url = typeof props.url === 'string' ? props.url : ''
+      const title = typeof props.title === 'string' ? props.title : ''
+      return getYouTubeID(url) && title ? { title, url } : false
+    },
+  },
 }

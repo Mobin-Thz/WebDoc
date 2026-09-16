@@ -19,12 +19,16 @@ test.afterAll(async () => {
 })
 
 test('administrator can sign in and open an authenticated preview', async ({ page }) => {
+  await page.setViewportSize({ width: 1053, height: 750 })
   await page.goto('/admin')
   await page.getByLabel('Email').fill(email)
   await page.getByLabel('Password').fill(password)
   await page.getByRole('button', { name: /login/i }).click()
+  await expect(page.locator('.dashboard-nav-link')).toBeVisible()
+  await expect(page.locator('.dashboard-nav-link')).toHaveText('Dashboard')
+  await expect(page.locator('.dashboard-nav-link')).toHaveAttribute('href', '/admin')
   await expect(page.getByRole('link', { name: 'Show all Subjects' })).toBeVisible()
 
-  await page.goto('/api/preview?secret=development-preview-secret&path=%2Flessons%2Fmeet-the-shell')
+  await page.goto(`/api/preview?secret=${encodeURIComponent(process.env.PREVIEW_SECRET ?? '')}&path=%2Flessons%2Fmeet-the-shell`)
   await expect(page.getByRole('heading', { level: 1, name: 'Meet the Shell' })).toBeVisible()
 })

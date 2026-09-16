@@ -103,9 +103,9 @@ export function LessonMarkdownControls() {
     <div className="lesson-markdown-actions">
       <Button buttonStyle="primary" className="lesson-markdown-import" disabled={disabled} margin={false} onClick={() => input.current?.click()} size="small">Choose .md file</Button>
       <span aria-hidden="true" className="lesson-markdown-divider" />
-      <Button buttonStyle="icon-label" disabled={disabled} margin={false} onClick={() => void exportFile()} size="small">Export .md</Button>
-      <Button buttonStyle="icon-label" disabled={disabled} margin={false} onClick={() => download(LESSON_MARKDOWN_TEMPLATE, 'webdoc-lesson-template.md')} size="small">Get template</Button>
-      <Button buttonStyle="icon-label" disabled={disabled} margin={false} onClick={() => void navigator.clipboard.writeText(AI_AUTHORING_PROMPT).then(() => setStatus('AI prompt copied.')).catch(() => setStatus('Could not copy the AI prompt.'))} size="small">Copy AI prompt</Button>
+      <Button buttonStyle="icon-label" className="lesson-markdown-export" disabled={disabled} margin={false} onClick={() => void exportFile()} size="small">Export .md</Button>
+      <Button buttonStyle="icon-label" className="lesson-markdown-template" disabled={disabled} margin={false} onClick={() => download(LESSON_MARKDOWN_TEMPLATE, 'webdoc-lesson-template.md')} size="small">Get template</Button>
+      <Button buttonStyle="icon-label" className="lesson-markdown-prompt" disabled={disabled} margin={false} onClick={() => void navigator.clipboard.writeText(AI_AUTHORING_PROMPT).then(() => setStatus('AI prompt copied.')).catch(() => setStatus('Could not copy the AI prompt.'))} size="small">Copy AI prompt</Button>
     </div>
     <span aria-live="polite" className="lesson-markdown-status">{status}</span>
   </section>

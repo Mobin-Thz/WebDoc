@@ -18,6 +18,10 @@ const serverURL = process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3000'
 
 export default buildConfig({
   admin: {
+    components: {
+      beforeNavLinks: ['@/components/DashboardNavLink'],
+      providers: ['@/components/AdminNavDefaultOpen'],
+    },
     importMap: { baseDir: path.resolve(dirname) },
     livePreview: {
       breakpoints: [

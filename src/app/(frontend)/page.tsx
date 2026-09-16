@@ -8,7 +8,7 @@ import type { Chapter } from '@/payload-types'
 export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
-  const [featured, recent, allSubjects] = await Promise.all([getSubjects(true), getRecentLessons(), getSubjects()])
+  const [featured, recent, allSubjects] = await Promise.all([getSubjects(true), getRecentLessons(5), getSubjects()])
   const subjects = featured.length ? featured : allSubjects.slice(0, 3)
   return (
     <>
